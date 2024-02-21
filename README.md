@@ -15,4 +15,4 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project
 
 ### summing else
 
-- [] update to ES6 Syntax
+- [X] update to ES6 Syntax

@@ -1,7 +1,6 @@
-
-const express = require('express');
-const cors = require('cors');
-const session = require('express-session');
+import express from "express";
+import cors from "cors";
+import session from "express-session";
 
 const app = express();
 const port = 3000;
@@ -9,22 +8,24 @@ const port = 3000;
 // ----- middleware -----
 app.use(express.json());
 app.use(cors());
-app.use(session({
-    secret: 'secret',
-    name: 'codeknackerSession',
+app.use(
+  session({
+    secret: "secret",
+    name: "codeknackerSession",
     resave: true,
     saveUninitialized: true,
-  }))
+  })
+);
 
 // ----- routes ------
-app.post('/api/login', (req, res) => {
-  console.log(req.body.username, req.body.password, req.sessi);
-  if (req.body.username === 'Harry' && req.body.password === '123') {
+app.post("/api/login", (req, res) => {
+  console.log(req.body.username, req.body.password, req.session);
+  if (req.body.username === "Harry" && req.body.password === "123") {
     req.session.username = req.body.username;
     req.session.loggedIn = true;
-    res.send('ok');
+    res.send("ok");
   } else {
-    res.status(403).send('forbidden');
+    res.status(403).send("forbidden");
   }
 });
 

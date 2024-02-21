@@ -7,8 +7,7 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project
 ### database
 
 - [] schema
-- [] create a table
-- [] create a database
+- [x] create a database
 
 ### routes
 

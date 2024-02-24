@@ -1,16 +1,17 @@
 import express from "express";
 import cors from "cors";
 import session from "express-session";
+import dotenv from "dotenv";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 // ----- middleware -----
 app.use(express.json());
 app.use(cors());
 app.use(
   session({
-    secret: "secret",
+    secret: process.env.SECRET,
     name: "codeknackerSession",
     resave: true,
     saveUninitialized: true,

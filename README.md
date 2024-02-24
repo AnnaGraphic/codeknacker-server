@@ -1,6 +1,6 @@
 # express server
 
-for [this](https://github.com/AnnaGraphic/codeknacker) project
+for [this](https://github.com/AnnaGraphic/codeknacker) project. using NoSQL database with [mongoDB](https://www.mongodb.com) and [mongoose](https://mongoosejs.com)
 
 ## TODOs:
 

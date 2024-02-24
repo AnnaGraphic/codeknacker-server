@@ -14,14 +14,21 @@ const connectMongoDB = async () => {
     console.log("error:", error);
   }
 };
-export const authUser = (req, res) => {
-  if (req.body.username === "Nina" && req.body.password === "Rüya2017") {
-    req.session.username = req.body.username;
-    req.session.loggedIn = true;
-    res.send("ok");
-  }
-  else {
-    res.status(403).send("forbidden");
+
+export const authUser = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username, password });
+    if (user) {
+      req.session.username = req.body.username;
+      req.session.loggedIn = true;
+      res.send("ok");
+    } else {
+      res.status(403).send("forbidden");
+    }
+  } catch (error) {
+    console.error();
+    res.status(500).json({ error: "Internal server error" });
   }
 }
 

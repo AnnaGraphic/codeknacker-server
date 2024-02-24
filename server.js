@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import session from "express-session";
+import './db.js';
+import { authUser } from "./db.js";
 import dotenv from "dotenv";
 
 const app = express();
@@ -21,13 +23,7 @@ app.use(
 // ----- routes ------
 app.post("/api/login", (req, res) => {
   console.log(req.body.username, req.body.password, req.session);
-  if (req.body.username === "Harry" && req.body.password === "123") {
-    req.session.username = req.body.username;
-    req.session.loggedIn = true;
-    res.send("ok");
-  } else {
-    res.status(403).send("forbidden");
-  }
+  authUser(req, res);
 });
 
 // TODO: logout route = req.session.destroy();

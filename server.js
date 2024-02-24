@@ -9,8 +9,8 @@ const app = express();
 const port = process.env.PORT;
 
 // ----- middleware -----
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 app.use(
   session({
     secret: process.env.SECRET,

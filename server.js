@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import session from "express-session";
 import './db.js';
-import { authUser } from "./db.js";
+import { authUser, registerUser } from "./db.js";
 import dotenv from "dotenv";
 
 const app = express();
@@ -21,6 +21,10 @@ app.use(
 );
 
 // ----- routes ------
+app.post("/api/signup", (req, res) => {
+  registerUser(req, res);
+});
+
 app.post("/api/login", (req, res) => {
   console.log(req.body.username, req.body.password, req.session);
   authUser(req, res);

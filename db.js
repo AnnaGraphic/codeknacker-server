@@ -32,4 +32,16 @@ export const authUser = async (req, res) => {
   }
 }
 
+export const registerUser = async (req, res) => {
+  // TODO: validate userdata
+  const newUser = req.body;
+  try {
+    const user = await User.create(newUser);
+    res.status(201).json({ success: true, user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: "Internal server error" });
+  }
+};
+
 connectMongoDB();

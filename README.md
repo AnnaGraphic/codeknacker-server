@@ -6,12 +6,14 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project. using NoSQL data
 
 ### database
 
-- [] schema
+- [] schemata
+    - [] UserSchema for auth
 - [x] create a database
 
 ### routes
 
 - [] create logout route
+- [] create signup route
 
 ### summing else
 

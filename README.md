@@ -12,10 +12,11 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project. using NoSQL data
 
 ### routes
 
-- [] create logout route
+- [x] create logout route
 - [x] create signup route
     - [] validate userdata in signup
-
+- [ ] create leaderboard-route
 ### summing else
 
 - [X] update to ES6 Syntax
+- [ ] debug session cookies

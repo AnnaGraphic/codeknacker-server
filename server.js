@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
 import session from "express-session";
-import './db.js';
-import { authUser, registerUser } from "./db.js";
+import { authUser, registerUser, logout } from "./db.js";
 import dotenv from "dotenv";
 
 const app = express();
@@ -25,12 +24,12 @@ app.post("/api/signup", (req, res) => {
   registerUser(req, res);
 });
 
-app.post("/api/login", (req, res) => {
-  console.log(req.body.username, req.body.password, req.session);
-  authUser(req, res);
+app.post("/api/login", authUser);
+app.use((req, res, next) => {
+  console.log("Session data:", req.session);
+  next();
 });
-
-// TODO: logout route = req.session.destroy();
+app.post("/api/logout", logout)
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

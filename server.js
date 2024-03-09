@@ -18,17 +18,16 @@ app.use(
     saveUninitialized: true,
   })
 );
-
-// ----- routes ------
-app.post("/api/signup", (req, res) => {
-  registerUser(req, res);
-});
-
-app.post("/api/login", authUser);
 app.use((req, res, next) => {
   console.log("Session data:", req.session);
   next();
 });
+
+// ----- routes ------
+app.post("/api/signup", registerUser);
+
+app.post("/api/login", authUser);
+
 app.post("/api/logout", logout)
 
 app.listen(port, () => {

@@ -16,6 +16,7 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project. using NoSQL data
 - [x] create signup route
     - [] validate userdata in signup
 - [ ] create leaderboard-route
+- [ ] add profile pic update
 ### summing else
 
 - [X] update to ES6 Syntax

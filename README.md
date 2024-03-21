@@ -15,7 +15,7 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project. using NoSQL data
 - [x] create logout route
 - [x] create signup route
     - [] validate userdata in signup
-- [ ] create leaderboard-route
+- [x] create leaderboard-route
 - [ ] add profile pic update
 ### summing else
 

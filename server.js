@@ -35,6 +35,10 @@ app.post("/api/login", authUser);
 
 app.post("/api/logout", logout);
 
+app.put("/api/userupdate", userupdate);
+
+app.get("/api/leaderboard", leaderboardData);
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });

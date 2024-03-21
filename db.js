@@ -46,6 +46,12 @@ export const registerUser = async (req, res) => {
   }
 };
 
+export const userupdate = async (req, res) => {
+  console.log("------------", req.session)
+  console.log('body', req.body);
+  res.send('ok')
+};
+
 export const logout = async (req, res) => {
   console.log("logout");
   console.log('req.session in /logout:', req.session);
@@ -57,6 +63,18 @@ export const logout = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "internal server error" });
   }
-}
+};
+
+// send limit in req? or use default limit?
+export const leaderboardData = async (req, res) => {
+  try {
+    const users = await User.find().sort({ score: -1 }).limit(10).select('username score');;
+    console.log(users);
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "internal server error" });
+  }
+};
 
 connectMongoDB();

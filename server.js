@@ -1,14 +1,19 @@
 import express from "express";
 import cors from "cors";
 import session from "express-session";
-import { authUser, registerUser, logout } from "./db.js";
+import { authUser, registerUser, logout, leaderboardData, userupdate } from "./db.js";
 import dotenv from "dotenv";
 
 const app = express();
 const port = process.env.PORT;
 
 // ----- middleware -----
-app.use(cors());
+app.use(cors({
+  // express configures the Access-Control-Allow-Origin CORS header
+  origin: 'http://localhost:5173',
+  // set to true to pass the header, eg to allow cookies
+  credentials: true,
+}));
 app.use(express.json());
 app.use(
   session({

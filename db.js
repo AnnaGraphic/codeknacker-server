@@ -15,14 +15,16 @@ const connectMongoDB = async () => {
   }
 };
 
-export const authUser = async (req, res) => {
+export const authUser = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username, password });
     if (user) {
       req.session.username = req.body.username;
       req.session.loggedIn = true;
+      console.log('req.session in /login:', req.session);
       res.send("ok");
+      next();
     } else {
       res.status(403).send("forbidden");
     }

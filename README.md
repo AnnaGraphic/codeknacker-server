@@ -20,5 +20,5 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project. using NoSQL data
 ### summing else
 
 - [X] update to ES6 Syntax
-- [ ] debug session cookies
+- [X] debug session cookies
 - [ ] hash pwd

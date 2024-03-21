@@ -50,13 +50,9 @@ export const logout = async (req, res) => {
   console.log("logout");
   console.log('req.session in /logout:', req.session);
   try {
-    if (req.session.loggedIn) {
-      delete req.session.username;
-      delete req.session.loggedIn;
-      res.send("logout successfull");
-    } else {
-      res.status(403).send("user not logged in")
-    }
+    delete req.session.username;
+    delete req.session.loggedIn;
+    res.send("ok");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "internal server error" });

@@ -33,7 +33,7 @@ app.post("/api/signup", registerUser);
 
 app.post("/api/login", authUser);
 
-app.post("/api/logout", logout)
+app.post("/api/logout", logout);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

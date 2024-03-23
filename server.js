@@ -2,8 +2,9 @@ import express from "express";
 import cors from "cors";
 import session from "express-session";
 import { authUser, registerUser, logout, leaderboardData, userupdate } from "./db.js";
-import dotenv from "dotenv";
+import { upload } from "./middleware/multer.js";
 
+// ----- config -----
 const app = express();
 const port = process.env.PORT;
 
@@ -29,13 +30,14 @@ app.use((req, res, next) => {
 });
 
 // ----- routes ------
+// upload.single('avatar') expects file with name 'avatar' in the request
+app.put("/api/userupdate", upload.single('avatar'), userupdate);
+
 app.post("/api/signup", registerUser);
 
 app.post("/api/login", authUser);
 
 app.post("/api/logout", logout);
-
-app.put("/api/userupdate", userupdate);
 
 app.get("/api/leaderboard", leaderboardData);
 

@@ -16,12 +16,14 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project. using NoSQL data
 - [x] create signup route
     - [] validate userdata in signup
 - [x] create leaderboard-route
-- [ ] add profile pic update
+- [x] add profile pic update
+    - [ ] send response
+    - [ ] replace avatar in database
 ### summing else
 
 - [X] update to ES6 Syntax
 - [X] debug session cookies
 - [ ] hash pwd
 - picture upload:
-    - [ ] configure multer i.p. filename
-    - [ ] implement storage service (cloudinary / S3)
+    - [x] configure multer i.p. filename
+    - [x] implement storage service (cloudinary)

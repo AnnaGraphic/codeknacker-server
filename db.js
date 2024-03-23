@@ -2,6 +2,14 @@ import "./config.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { User } from "./models/User.js";
+import { v2 as cloudinary } from "cloudinary";
+
+// ----- config -----
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 
 dotenv.config();
 
@@ -47,9 +55,15 @@ export const registerUser = async (req, res) => {
 };
 
 export const userupdate = async (req, res) => {
-  console.log("------------", req.session)
-  console.log('body', req.body);
+  try {
+  const result = await cloudinary.uploader.upload(req.file?.path);
+  console.log("--------- session data: ", req.session)
+  console.log('--------- req.file: ', req.file);
   res.send('ok')
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "internal server error" });
+  }
 };
 
 export const logout = async (req, res) => {

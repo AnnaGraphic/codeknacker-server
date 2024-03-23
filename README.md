@@ -22,3 +22,6 @@ for [this](https://github.com/AnnaGraphic/codeknacker) project. using NoSQL data
 - [X] update to ES6 Syntax
 - [X] debug session cookies
 - [ ] hash pwd
+- picture upload:
+    - [ ] configure multer i.p. filename
+    - [ ] implement storage service (cloudinary / S3)

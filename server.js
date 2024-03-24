@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import session from "express-session";
-import { authUser, registerUser, logout, leaderboardData, userupdate } from "./db.js";
+import { authUser, registerUser, logout, leaderboardData, uploadAvatar } from "./db.js";
 import { upload } from "./middleware/multer.js";
 
 // ----- config -----
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 
 // ----- routes ------
 // upload.single('avatar') expects file with name 'avatar' in the request
-app.put("/api/userupdate", upload.single('avatar'), userupdate);
+app.put("/api/userupdate", upload.single('avatar'), uploadAvatar);
 
 app.post("/api/signup", registerUser);
 

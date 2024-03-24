@@ -54,15 +54,24 @@ export const registerUser = async (req, res) => {
   }
 };
 
-export const userupdate = async (req, res) => {
+export const uploadAvatar = async (req, res) => {
+  // check for session cookies? user auth?
   try {
+  if (!req.file) {
+    console.error('no file in request');
+    return res.status(400).json({ error: "no file selected" });
+  }
+
   const result = await cloudinary.uploader.upload(req.file?.path);
-  console.log("--------- session data: ", req.session)
-  console.log('--------- req.file: ', req.file);
-  res.send('ok')
+  if (!result) {
+    console.error('error uploading image to cloudinary');
+    return res.status(500).json({ error: "image upload failed" });
+  }
+
+  res.status(203).json({ 'secure_url': result.secure_url });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "internal server error" });
+    console.error("internal server error:", error);
+    return res.status(500).json({ error: "internal server error" });
   }
 };
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.IO Test</title>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="input" autocomplete="off" />
+      <button type="submit">Senden</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+         document.addEventListener("DOMContentLoaded", function () {
+      const client = io("http://localhost:3001");
+
+      // Ereignisbehandlung für das Senden einer Nachricht
+      document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const input = document.getElementById("input");
+        console.log('input:',input);
+        if (input.value) {
+          // Nachricht an den Server senden
+          client.emit("event", input.value);
+         
+        }
+        console.log('input.value:',input.value);
+    });
+
+      // Ereignisbehandlung für das Empfangen einer Nachricht vom Server
+      client.on("event", function (data) {
+        const item = document.createElement("li");
+        item.textContent = data;
+        document.getElementById("messages").appendChild(item);
+      });
+    });
+    </script>
+  </body>
+</html
